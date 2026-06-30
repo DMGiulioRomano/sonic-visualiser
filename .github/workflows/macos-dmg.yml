@@ -11,7 +11,9 @@ name: macOS .dmg artifact
 
 on:
   push:
-    branches: [ "claude/sonic-visualiser-issue-plan-gy0pxl" ]
+    branches:
+      - "claude/sonic-visualiser-issue-plan-gy0pxl"
+      - "claude/sonic-visualiser-issue-3-36pkqh"
   workflow_dispatch:
 
 jobs:
