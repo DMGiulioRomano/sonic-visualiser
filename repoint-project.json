@@ -12,7 +12,7 @@
             "vcs": "git",
             "service": "github",
             "owner": "DMGiulioRomano",
-            "branch": "claude/sv-onset-offset-feature-2zk0db"
+            "branch": "default"
         },
         "svgui": {
             "vcs": "git",
