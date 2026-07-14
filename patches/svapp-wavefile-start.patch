@@ -1,0 +1,22 @@
+diff --git a/framework/SVFileReader.cpp b/framework/SVFileReader.cpp
+index 148d842..762df2f 100644
+--- a/framework/SVFileReader.cpp
++++ b/framework/SVFileReader.cpp
+@@ -606,6 +606,17 @@ SVFileReader::readModel(const QXmlStreamAttributes &attributes)
+ 
+         model->setObjectName(name);
+ 
++        // An optional start attribute permits the audio file to be
++        // anchored at a nonzero frame on the session timeline. This
++        // is the same attribute that Model::toXml already writes for
++        // every model, so sessions round-trip; files that lack it (or
++        // have start="0") are anchored at frame 0 as before.
++        sv_frame_t startFrame =
++            attributes.value("start").trimmed().toLongLong(&ok);
++        if (ok && startFrame > 0) {
++            model->setStartFrame(startFrame);
++        }
++
+         ModelId modelId = ModelById::add(std::shared_ptr<Model>(model));
+         m_models[id] = modelId;
+         

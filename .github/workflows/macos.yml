@@ -13,6 +13,8 @@ jobs:
       run: brew install smlnj qt6 meson ninja capnp mercurial
     - name: repoint
       run: PATH=$PATH:/usr/local/smlnj/bin ./repoint install
+    - name: apply-svapp-patches
+      run: git -C svapp apply ../patches/svapp-wavefile-start.patch
     - name: configure
       run: meson setup build --buildtype release
     - name: make

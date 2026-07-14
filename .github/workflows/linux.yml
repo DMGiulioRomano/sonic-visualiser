@@ -32,6 +32,8 @@ jobs:
         sudo ninja -C build install
     - name: repoint
       run: ./repoint install
+    - name: apply-svapp-patches
+      run: git -C svapp apply ../patches/svapp-wavefile-start.patch
     - name: configure
       run: |
         qtchooser -install qt6 $(which qmake6)

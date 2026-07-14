@@ -11,8 +11,8 @@
         "svcore": {
             "vcs": "git",
             "service": "github",
-            "owner": "sonic-visualiser",
-            "branch": "default"
+            "owner": "DMGiulioRomano",
+            "branch": "claude/sv-onset-offset-feature-2zk0db"
         },
         "svgui": {
             "vcs": "git",

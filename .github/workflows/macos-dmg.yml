@@ -30,6 +30,11 @@ jobs:
       - name: Fetch subrepositories (repoint)
         run: ./repoint install
 
+      # svapp is pulled from the upstream sonic-visualiser org, so
+      # local changes to it are carried as patch files in patches/
+      - name: Apply svapp patches
+        run: git -C svapp apply ../patches/svapp-wavefile-start.patch
+
       - name: Configure
         run: meson setup build --buildtype release
 
