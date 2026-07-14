@@ -907,7 +907,9 @@ if with_qt
   svcore_data_model_test_moc_files = qt.preprocess(
     moc_headers: [
       'svcore/data/model/test/MockWaveModel.h',
+      'svcore/data/model/test/TestDense3DModelPeakCache.h',
       'svcore/data/model/test/TestFFTModel.h',
+      'svcore/data/model/test/TestReadOnlyWaveFileModel.h',
       'svcore/data/model/test/TestSparseModels.h',
       'svcore/data/model/test/TestWaveformOversampler.h',
       'svcore/data/model/test/TestZoomConstraints.h',
