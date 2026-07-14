@@ -11,7 +11,9 @@ name: macOS .dmg artifact
 
 on:
   push:
-    branches: [ "claude/sonic-visualiser-issue-plan-gy0pxl" ]
+    branches:
+      - "claude/sonic-visualiser-issue-plan-gy0pxl"
+      - "claude/sv-onset-offset-feature-2zk0db"
   workflow_dispatch:
 
 jobs:
@@ -29,6 +31,11 @@ jobs:
 
       - name: Fetch subrepositories (repoint)
         run: ./repoint install
+
+      # svapp is pulled from the upstream sonic-visualiser org, so
+      # local changes to it are carried as patch files in patches/
+      - name: Apply svapp patches
+        run: git -C svapp apply ../patches/svapp-wavefile-start.patch
 
       - name: Configure
         run: meson setup build --buildtype release
