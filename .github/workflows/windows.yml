@@ -31,6 +31,9 @@ jobs:
     - name: repoint
       run: ./repoint install
 
+    - name: apply-svapp-patches
+      run: git -C svapp apply ../patches/svapp-wavefile-start.patch
+
     - name: configure
       run: meson setup build --buildtype release
 
