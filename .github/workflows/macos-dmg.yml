@@ -12,8 +12,8 @@ name: macOS .dmg artifact
 on:
   push:
     branches:
-      - "claude/sonic-visualiser-issue-plan-gy0pxl"
-      - "claude/sv-onset-offset-feature-2zk0db"
+      - "default"
+  pull_request:
   workflow_dispatch:
 
 jobs:
@@ -27,7 +27,18 @@ jobs:
       - name: Install dependencies
         # polyml provides the SML compiler repoint needs (reliable on arm64);
         # mercurial is required for the breakfastquay hg subrepositories.
-        run: brew install qt meson ninja capnp mercurial polyml
+        run: brew install qt meson ninja capnp mercurial polyml ccache
+
+      # ccache persists compiled objects between runs; meson picks it up
+      # automatically when it is in PATH at setup time, so later builds
+      # only recompile the files that actually changed.
+      - name: Restore compiler cache
+        uses: actions/cache@v4
+        with:
+          path: ~/Library/Caches/ccache
+          key: macos-dmg-ccache-${{ github.sha }}
+          restore-keys: |
+            macos-dmg-ccache-
 
       - name: Fetch subrepositories (repoint)
         run: ./repoint install
@@ -42,6 +53,12 @@ jobs:
 
       - name: Build
         run: ninja -C build
+
+      - name: Test
+        run: meson test -C build
+
+      - name: Show ccache statistics
+        run: ccache -s
 
       - name: Assemble .app bundle
         run: QTDIR=/opt/homebrew ./deploy/macos/deploy.sh "Sonic Visualiser"
