@@ -11,7 +11,7 @@
         "svcore": {
             "vcs": "git",
             "service": "github",
-            "owner": "sonic-visualiser",
+            "owner": "DMGiulioRomano",
             "branch": "default"
         },
         "svgui": {
