@@ -891,6 +891,7 @@ if with_qt
       'svcore/base/test/TestEventSeries.h',
       'svcore/base/test/TestRangeMapper.h',
       'svcore/base/test/TestScaleTickIntervals.h',
+      'svcore/base/test/TestStorageAdviser.h',
       'svcore/base/test/TestStringBits.h',
       'svcore/base/test/TestVampRealTime.h',
       'svcore/base/test/StressEventSeries.h',
