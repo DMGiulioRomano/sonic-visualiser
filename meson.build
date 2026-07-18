@@ -918,6 +918,7 @@ if with_qt
   svcore_data_fileio_test_moc_files = qt.preprocess(
     moc_headers: [
       'svcore/data/model/test/MockWaveModel.h',
+      'svcore/data/fileio/test/AudioFileReaderFactoryTest.h',
       'svcore/data/fileio/test/AudioFileReaderTest.h',
       'svcore/data/fileio/test/BogusAudioFileReaderTest.h',
       'svcore/data/fileio/test/AudioFileWriterTest.h',
